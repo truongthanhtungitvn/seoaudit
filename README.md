@@ -32,7 +32,7 @@ var s = fs.createReadStream("input.html");
 seoAudit.parseStream(s);
 
 //simple HTML file parsing and write audit result to output file
-var seoAudit = new SeoAudit({}, "file");
+var seoAudit = new SeoAudit({}, "file", "output.txt");
 seoAudit.parseFile("input.html");
 
 //simple HTML file parsing and get result to write stream

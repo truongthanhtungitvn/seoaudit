@@ -22,9 +22,10 @@ class SeoAudit {
      * @param {String} config customize configuration
      * @param {Object} output console/steam/file
      */
-    constructor(config, output){
+    constructor(config, output, filePathOutput = ""){
         this.rules = JSON.parse(JSON.stringify(defaultRules));
         this.ruleHandler = new RulesHandler();
+        this.filePathOutput = filePathOutput;
 
         let me = this;
 
@@ -118,7 +119,7 @@ class SeoAudit {
         } else if (this.output == "stream") {
             this._outputReadStream.push(_fnOutputString());
         } else { //write file
-            const fileName = "result.txt";
+            const fileName = this.filePathOutput ? this.filePathOutput : 'result.txt' ;
             fs.writeFile(fileName, _fnOutputString(), function (err) {
                 if (err) {
                     return console.log(err);
