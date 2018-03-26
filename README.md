@@ -82,7 +82,7 @@ seoAudit.parseFile("input.html");
 #### CommandLine Usage
 
 ```bash
-seoaudit --file [file path] OR --stream [file path]
+seoaudit --file [input file path] OR --stream [file path] --outfile [result file path in case output type is file]
 ```
 
 #### Dependencies

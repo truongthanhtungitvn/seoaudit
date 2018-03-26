@@ -25,11 +25,18 @@ const argv = require('yargs')
                 choices: ['console', 'file', 'stream'],
                 default: 'console'
             })
+            .option('outfile', {
+                alias: 'of',
+                describe: 'file output path. --outfile filepath',
+                default: 'result.txt'
+            })
             .alias('h', 'help')
             .help('h').argv;
 
 const SeoAudit = require('./seoaudit');
-const seoAudit = new SeoAudit(argv.config, argv.out);
+
+let outputPath = argv.outfile ? argv.outfile : 'result.txt'
+const seoAudit = new SeoAudit(argv.config, argv.out, outputPath);
 
 if (argv.stream) {
     const s = fs.createReadStream(argv.stream);
